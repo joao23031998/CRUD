@@ -32,11 +32,12 @@ class Usuario{
 		return $this->dataNascimento;
 	}
 
-	public function insereUsuario($nome, $email, $senha, $dataNascimento){
+	public function save()
+	{
 		$conn = new Connect();
 		
 		$query = "INSERT INTO usuario (nome, email, senha, data_de_nascimento) 
-		VALUES ('{$nome}', '{$email}', '{$senha}', '{$dataNascimento}')";
+		VALUES ('{$this->getNome()}', '{$this->getEmail()}', '{$this->getSenha()}', '{$this->getDataNascimento()}')";
 
 		if ($conn->getConnection()->query($query) == true) {
 			echo "Usuário criado com sucesso";
